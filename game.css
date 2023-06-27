@@ -1,0 +1,110 @@
+#rock {
+    width: 100px;
+    height: 100px;
+    background-image: url('Images/squirtle.gif');
+    background-size: contain; /* Adjust to fit the entire image */
+    background-repeat: no-repeat; /* Prevent image repetition */
+    background-position: center; /* Center the image within the button */
+    text-indent: -9999px; /* Hide the button text */
+    border: none; /* Remove the button border */
+  }
+
+
+  #paper {
+    width: 100px;
+    height: 100px;
+    background-image: url('Images/charmander.gif');
+    background-size: contain; /* Adjust to fit the entire image */
+    background-repeat: no-repeat; /* Prevent image repetition */
+    background-position: center; /* Center the image within the button */
+    text-indent: -9999px; /* Hide the button text */
+    border: none; /* Remove the button border */
+  }
+
+  #scissors {
+    width: 100px;
+    height: 100px;
+    background-image: url('Images/bulbasaur.gif');
+    background-size: contain; /* Adjust to fit the entire image */
+    background-repeat: no-repeat; /* Prevent image repetition */
+    background-position: center; /* Center the image within the button */
+    text-indent: -9999px; /* Hide the button text */
+    border: none; /* Remove the button border */
+  }
+
+
+  body {
+    background-image: url('Images/trainer_battles_arena.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  
+  }
+  .button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: 10px; /* Add space between the button row and choice images */
+
+  }
+  
+  #rock,
+  #paper,
+  #scissors {
+    width: 100px;
+    height: 100px;
+    background-color: transparent; /* Set background color to transparent */
+    margin-bottom: 10px;
+    margin-bottom: 10px;
+    text-indent: -9999px;
+    border: none;
+  }
+ 
+  .choice-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin-left: 10px; /* Add space between the button row and choice images */
+  
+  }
+  
+  
+  .choice-image {
+    width: 100px;
+    height: 100px;
+    margin-left: 10px; /* Add space between choice images */
+
+  }
+  
+  .choice-image.selected {
+    transform: scale(1.1); /* Increase the size by 10% */
+    transition: transform 0.3s ease; /* Add a smooth transition effect */
+  }
+  
+  #player-score {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+  
+  #computer-score {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  #result {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
