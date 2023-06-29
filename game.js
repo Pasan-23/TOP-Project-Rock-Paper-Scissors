@@ -1,8 +1,10 @@
+// Function to update the result text on the UI
 function updateResultText(text) {
   const resultDiv = document.getElementById("result");
   resultDiv.textContent = text;
 }
 
+// Function to get the player's selection
 function getplayerSelection() {
   return new Promise((resolve, reject) => {
     document.getElementById("rock").addEventListener("click", function() {
@@ -20,13 +22,12 @@ function getplayerSelection() {
 }
 
 
-//get choice from computer
-//generate random number 1-3, assign 1 to rock, 2 to paper, so on.
-//return result
+// Function to get the computer's choice
 function getComputerChoice() {
 const choices = ["rock", "paper", "scissors"];
 const randomIndex = Math.floor(Math.random() * choices.length);
 const choice = choices[randomIndex];
+
 
 const choiceElement = document.getElementById(choice);
 choiceElement.classList.add("selected");
@@ -34,26 +35,9 @@ choiceElement.classList.add("selected");
 return choice;
 }
 
-function applyEffectToChoice(choice) {
-const choiceElement = document.getElementById(choice);
-choiceElement.classList.add("selected");
-}
-
-function clearEffects() {
-const choiceElements = document.querySelectorAll(".choice");
-choiceElements.forEach((element) => {
-  element.classList.remove("selected");
-});
-} 
 
 
-const playerSelection = getplayerSelection();
-const computerSelection = getComputerChoice();
-
-//will add for loop later
-//get selection from player and computer
-//compare both choices
-//return winner
+// Function to play a round of the game
 function playRound(playerSelection, computerSelection) {
   if (playerSelection == computerSelection) {
       return "tie";
@@ -85,31 +69,31 @@ function playRound(playerSelection, computerSelection) {
 
 }
 
+// Function to update the player's score on the UI
 function updatePlayerScore(score) {
   const playerScoreDiv = document.getElementById("player-score");
   playerScoreDiv.textContent = `Player Score: ${score}`;
 }
 
+// Function to update the computer's score on the UI
 function updateComputerScore(score) {
   const computerScoreDiv = document.getElementById("computer-score");
   computerScoreDiv.textContent = `Computer Score: ${score}`;
 }
 
-//if player add point if computer add point 
-//if less than 5 total run playRound funtion else game over
-//keep score 
+// Function to start the game
 async function game() {
-let playerScore = 0;
-let computerScore = 0;
-let round = 1;
+// Initialize game variables
+  let playerScore = 0;
+  let computerScore = 0;
+  let round = 1;
 
 while (playerScore < 5 && computerScore < 5) {
-  console.log(`Round ${round}`);
+ 
 
   const playerSelection = await getplayerSelection();
   const computerSelection = getComputerChoice();
 
-  applyEffectToChoice(computerSelection);
 
   let result = playRound(playerSelection, computerSelection);
 
@@ -117,25 +101,41 @@ while (playerScore < 5 && computerScore < 5) {
     playerScore++;
     updateResultText(`Round ${round}: Player gets a point!`);
     updatePlayerScore(playerScore);
+    console.log(`Round ${round}`); // Log the round number
   } else if (result === "computer") {
     computerScore++;
     updateResultText(`Round ${round}: Computer gets a point!`);
     updateComputerScore(computerScore);
+    console.log(`Round ${round}`); // Log the round number
   } else if (result === "tie") {
     updateResultText(`Round ${round}: It's a tie! Play again.`);
+    console.log(`Round ${round}`); // Log the round number
   } else {
     return "error";
   }
+  
+  // Create the log string with round, player's selection, and computer's choice
+  const logString = `Round ${round}: Player chose ${playerSelection}, Computer chose ${computerSelection}`;
+
+  // Update the content of the logInfo element
+  const logInfoDiv = document.getElementById("logInfo");
+  logInfoDiv.textContent = logString;
+
+
 
   round++;
+
 }
 
 if (playerScore > computerScore) {
-  updateResultText("Congratulations! You won the game.");
+  updateResultText(`Round ${round}:Congratulations! You won the game.`);
+  console.log(`Round ${round}`); // Log the round number
 } else if (computerScore > playerScore) {
-  updateResultText("Oops! The computer won the game.");
+  updateResultText(`Round ${round}: Oops! The computer won the game.`);
+  console.log(`Round ${round}`); // Log the round number
 } else {
-  updateResultText("It's a draw! You both played well.");
+  updateResultText(`Round ${round}:It's a draw! You both played well.`);
+  console.log(`Round ${round}`); // Log the round number
 }
 }
 

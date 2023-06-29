@@ -78,17 +78,13 @@
   }
   
   
-  .choice-image {
+  .choice {
     width: 100px;
     height: 100px;
     margin-left: 10px; /* Add space between choice images */
 
   }
   
-  .choice-image.selected {
-    transform: scale(1.1); /* Increase the size by 10% */
-    transition: transform 0.3s ease; /* Add a smooth transition effect */
-  }
   
   #player-score {
     position: absolute;
