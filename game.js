@@ -81,6 +81,10 @@ function updateComputerScore(score) {
   computerScoreDiv.textContent = `Computer Score: ${score}`;
 }
 
+// Define an array to store the round logs
+const roundLogs = [];
+
+
 // Function to start the game
 async function game() {
 // Initialize game variables
@@ -114,14 +118,15 @@ while (playerScore < 5 && computerScore < 5) {
     return "error";
   }
   
-  // Create the log string with round, player's selection, and computer's choice
-  const logString = `Round ${round}: Player chose ${playerSelection}, Computer chose ${computerSelection}`;
+    // Create the log string with round, player's selection, and computer's choice
+    const logString = `Round ${round}: Player chose ${playerSelection}, Computer chose ${computerSelection}`;
 
-  // Update the content of the logInfo element
-  const logInfoDiv = document.getElementById("logInfo");
-  logInfoDiv.textContent = logString;
+    // Add the log string to the roundLogs array
+    roundLogs.push(logString);
 
-
+    // Append the log string to the logInfo element
+    const logInfoDiv = document.getElementById("logInfo");
+    logInfoDiv.innerHTML += logString + "<br>";
 
   round++;
 

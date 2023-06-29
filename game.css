@@ -33,32 +33,27 @@
   }
 
 
-  body {
+  html {
     background-image: url('Images/trainer_battles_arena.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    height: 100vh;
+    height: auto;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  
+    
   }
-  .button-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    margin-right: 10px; /* Add space between the button row and choice images */
 
+
+  .BigBoxContainer {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+   align-items: center;
+   height: 100vh; /* Set a height for the container */
   }
   
-  #rock,
-  #paper,
-  #scissors {
+  #rock,#paper,#scissors {
     width: 100px;
     height: 100px;
     background-color: transparent; /* Set background color to transparent */
@@ -67,15 +62,7 @@
     text-indent: -9999px;
     border: none;
   }
- 
-  .choice-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    margin-left: 10px; /* Add space between the button row and choice images */
-  
-  }
+
   
   
   .choice {
@@ -90,12 +77,15 @@
     position: absolute;
     top: 10px;
     left: 10px;
+    font-size: 25px;
   }
   
   #computer-score {
     position: absolute;
     top: 10px;
     right: 10px;
+    font-size: 25px;
+
   }
 
   #result {
@@ -103,4 +93,15 @@
     top: 10px;
     left: 50%;
     transform: translateX(-50%);
+    font-size: 25px;
   }
+
+ .logInfo {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  border: 10px solid black;
+  max-width: 500px;
+  margin: 0 auto; /* Center horizontally */
+  font-size: 20px;
+ }
