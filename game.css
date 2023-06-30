@@ -1,33 +1,36 @@
-#rock {
-    width: 100px;
-    height: 100px;
-    background-image: url('Images/squirtle.gif');
-    background-size: contain; /* Adjust to fit the entire image */
-    background-repeat: no-repeat; /* Prevent image repetition */
-    background-position: center; /* Center the image within the button */
-    text-indent: -9999px; /* Hide the button text */
-    border: none; /* Remove the button border */
-  }
-
-
-  #paper {
+button[data-choice="charmander"] {
     width: 100px;
     height: 100px;
     background-image: url('Images/charmander.gif');
     background-size: contain; /* Adjust to fit the entire image */
     background-repeat: no-repeat; /* Prevent image repetition */
     background-position: center; /* Center the image within the button */
+    background-color: transparent;
     text-indent: -9999px; /* Hide the button text */
     border: none; /* Remove the button border */
   }
 
-  #scissors {
+
+  button[data-choice="bulbasaur"] {
     width: 100px;
     height: 100px;
     background-image: url('Images/bulbasaur.gif');
     background-size: contain; /* Adjust to fit the entire image */
     background-repeat: no-repeat; /* Prevent image repetition */
     background-position: center; /* Center the image within the button */
+    background-color: transparent;
+    text-indent: -9999px; /* Hide the button text */
+    border: none; /* Remove the button border */
+  }
+
+  button[data-choice="squirtle"] {
+    width: 100px;
+    height: 100px;
+    background-image: url('Images/squirtle.gif');
+    background-size: contain; /* Adjust to fit the entire image */
+    background-repeat: no-repeat; /* Prevent image repetition */
+    background-position: center; /* Center the image within the button */
+    background-color: transparent;
     text-indent: -9999px; /* Hide the button text */
     border: none; /* Remove the button border */
   }
@@ -52,17 +55,6 @@
    align-items: center;
    height: 100vh; /* Set a height for the container */
   }
-  
-  #rock,#paper,#scissors {
-    width: 100px;
-    height: 100px;
-    background-color: transparent; /* Set background color to transparent */
-    margin-bottom: 10px;
-    margin-bottom: 10px;
-    text-indent: -9999px;
-    border: none;
-  }
-
   
   
   .choice {
@@ -104,4 +96,21 @@
   max-width: 500px;
   margin: 0 auto; /* Center horizontally */
   font-size: 20px;
+ }
+ img {
+  transition: all 0.2s ease-in-out 0.1s;
+ }
+ img.selected {
+  transform: scale(2.2);
+ }
+
+ button {
+  transition: all 0.2s ease-in-out 0.1s;
+ }
+ button.pressed {
+  transform: scale(2.2);
+ }
+
+ button.remove {
+  transform: scale(1.0);
  }

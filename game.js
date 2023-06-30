@@ -7,33 +7,49 @@ function updateResultText(text) {
 // Function to get the player's selection
 function getplayerSelection() {
   return new Promise((resolve, reject) => {
-    document.getElementById("rock").addEventListener("click", function() {
-      resolve("rock");
-    });
-
-    document.getElementById("paper").addEventListener("click", function() {
-      resolve("paper");
-    });
-
-    document.getElementById("scissors").addEventListener("click", function() {
-      resolve("scissors");
+    const buttons = document.querySelectorAll('.button-container button');
+    buttons.forEach(button => {
+      const choice = button.getAttribute('data-choice');
+      button.addEventListener("click", function() {
+        buttons.forEach(btn => {
+          btn.classList.remove("pressed", "remove"); // Remove all classes from all buttons
+        });
+        button.classList.add("pressed"); // Add the first and third classes
+        setTimeout(() => {
+          button.classList.add("remove"); // Add the second class after a delay (e.g., 1 second)
+          resolve(choice);
+        }, 1000);
+        const audio = new Audio(`audio/${choice}.mp3`); // Create an Audio object with the audio file path
+        audio.play(); // Play the audio
+        
+      });
     });
   });
 }
 
 
+
+
 // Function to get the computer's choice
 function getComputerChoice() {
-const choices = ["rock", "paper", "scissors"];
-const randomIndex = Math.floor(Math.random() * choices.length);
-const choice = choices[randomIndex];
+  const choices = ["charmander", "bulbasaur", "squirtle"];
+  const randomIndex = Math.floor(Math.random() * choices.length);
+  const choice = choices[randomIndex];
 
+  const choiceElement = document.querySelector('img[data-choice="' + choice + '"]');
+  choiceElement.classList.add("selected");
 
-const choiceElement = document.getElementById(choice);
-choiceElement.classList.add("selected");
+  setTimeout(function() {
+    choiceElement.classList.remove("selected");
+  }, 2000); // Revert back to normal size after 2 seconds
 
-return choice;
+  const audio = new Audio(`audio/${choice}.mp3`); // Create an Audio object with the audio file path
+  audio.play(); // Play the audio
+
+  return choice;
 }
+
+
 
 
 
@@ -42,28 +58,28 @@ function playRound(playerSelection, computerSelection) {
   if (playerSelection == computerSelection) {
       return "tie";
   }
-  else if (playerSelection == "rock") {
-      if (computerSelection == "scissors") {
-          return "player";
+  else if (playerSelection == "charmander") {
+      if (computerSelection == "squirtle") {
+          return "computer";
       }
       else {
-          return "computer";
+          return "player";
       }
   }
-  else if (playerSelection == "paper") {
-      if(computerSelection == "rock") {
-          return "player";
+  else if (playerSelection == "bulbasaur") {
+      if(computerSelection == "charmander") {
+          return "computer";
       }
       else {
-          return "computer";
+          return "player";
       }
   }
-  else if (playerSelection === "scissors"){
-      if (computerSelection == "paper"){
-          return "player";
+  else if (playerSelection === "squirtle"){
+      if (computerSelection == "bulbasaur"){
+          return "computer";
       }
       else {
-          return "computer";
+          return "player";
       }
   }
 
@@ -132,17 +148,27 @@ while (playerScore < 5 && computerScore < 5) {
 
 }
 
+
+
+
 if (playerScore > computerScore) {
   updateResultText(`Round ${round}:Congratulations! You won the game.`);
   console.log(`Round ${round}`); // Log the round number
+  //startAudio.pause(); // Pause the start audio
+  //startAudio.currentTime = 0; // Reset the start audio to the beginning
+      
 } else if (computerScore > playerScore) {
   updateResultText(`Round ${round}: Oops! The computer won the game.`);
   console.log(`Round ${round}`); // Log the round number
+  //startAudio.pause(); // Pause the start audio
+  //startAudio.currentTime = 0; // Reset the start audio to the beginning
+
 } else {
   updateResultText(`Round ${round}:It's a draw! You both played well.`);
   console.log(`Round ${round}`); // Log the round number
+  //startAudio.pause(); // Pause the start audio
+  //startAudio.currentTime = 0; // Reset the start audio to the beginning
 }
 }
 
 game();
-
