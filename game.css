@@ -1,0 +1,116 @@
+button[data-choice="charmander"] {
+    width: 100px;
+    height: 100px;
+    background-image: url('Images/charmander.gif');
+    background-size: contain; /* Adjust to fit the entire image */
+    background-repeat: no-repeat; /* Prevent image repetition */
+    background-position: center; /* Center the image within the button */
+    background-color: transparent;
+    text-indent: -9999px; /* Hide the button text */
+    border: none; /* Remove the button border */
+  }
+
+
+  button[data-choice="bulbasaur"] {
+    width: 100px;
+    height: 100px;
+    background-image: url('Images/bulbasaur.gif');
+    background-size: contain; /* Adjust to fit the entire image */
+    background-repeat: no-repeat; /* Prevent image repetition */
+    background-position: center; /* Center the image within the button */
+    background-color: transparent;
+    text-indent: -9999px; /* Hide the button text */
+    border: none; /* Remove the button border */
+  }
+
+  button[data-choice="squirtle"] {
+    width: 100px;
+    height: 100px;
+    background-image: url('Images/squirtle.gif');
+    background-size: contain; /* Adjust to fit the entire image */
+    background-repeat: no-repeat; /* Prevent image repetition */
+    background-position: center; /* Center the image within the button */
+    background-color: transparent;
+    text-indent: -9999px; /* Hide the button text */
+    border: none; /* Remove the button border */
+  }
+
+
+  html {
+    background-image: url('Images/trainer_battles_arena.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    
+  }
+
+
+  .BigBoxContainer {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+   align-items: center;
+   height: 100vh; /* Set a height for the container */
+  }
+  
+  
+  .choice {
+    width: 100px;
+    height: 100px;
+    margin-left: 10px; /* Add space between choice images */
+
+  }
+  
+  
+  #player-score {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 25px;
+  }
+  
+  #computer-score {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 25px;
+
+  }
+
+  #result {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 25px;
+  }
+
+ .logInfo {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  border: 10px solid black;
+  max-width: 500px;
+  margin: 0 auto; /* Center horizontally */
+  font-size: 20px;
+ }
+ img {
+  transition: all 0.2s ease-in-out 0.1s;
+ }
+ img.selected {
+  transform: scale(2.2);
+ }
+
+ button {
+  transition: all 0.2s ease-in-out 0.1s;
+ }
+ button.pressed {
+  transform: scale(2.2);
+ }
+
+ button.remove {
+  transform: scale(1.0);
+ }

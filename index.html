@@ -5,150 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>R-P-S</title>
+    <link rel="stylesheet" type="text/css" href="game.css">
+
 </head>
+
 <body>
-    
-<script>
-//player input choice, also conver all letters to lowercase
-//return result
 
-function getplayerSelection() {
-    var choice = prompt("Input your choice, your options are rock, paper or scissor?").toLowerCase();
-    return(choice);
-}
+  <div id="player-score">Player Score: 0</div>
+  <div id="computer-score">Computer Score: 0</div>
 
-//get choice from computer
-//generate random number 1-3, assign 1 to rock, 2 to paper, so on.
-//return result
+  <div id="result"></div>
 
-function getComputerChoice(){
-    let num = Math.floor(Math.random() * 3);
-     if (num == 0) {
-        let choice = "rock";
-        return(choice);
-     }
-     else if (num == 1) {
-        let choice = "paper";
-        return(choice);
-     }
-     else if(num == 2) {
-        let choice = "scissor"
-        return(choice);
-     }
-     else {
-      return "error";
-     }
-}
+  
+<div class="BigBoxContainer">
+  
+  <div class="button-container">
+   <button data-choice="charmander">charmander</button>
+   <button data-choice="bulbasaur">bulbasaur</button>
+   <button data-choice="squirtle">squirtle</button>
+  </div>
 
-const playerSelection = getplayerSelection();
-const computerSelection = getComputerChoice();
 
-//console.log(playerSelection);
-//console.log(computerSelection);
+   <div class="choice-container">
+    <img data-choice="charmander" class="choice" src="Images/charmander.gif" alt="charmander">
+    <img data-choice="bulbasaur" class="choice" src="Images/bulbasaur.gif" alt="bulbasaur">
+    <img data-choice="squirtle" class="choice" src="Images/squirtle.gif" alt="squirtle">
+   </div>
+
+ </div>
+
+  <div class="logInfo" id="logInfo"></div>
 
 
 
-//will add for loop later
-//get selection from player and computer
-//compare both choices
-//return winner
 
-function playRound(playerSelection, computerSelection) {
-    if (playerSelection == computerSelection) {
-        return "tie";
-    }
-    else if (playerSelection == "rock") {
-        if (computerSelection == "scissor") {
-            return "player";
-        }
-        else {
-            return "computer";
-        }
-    }
-    else if (playerSelection == "paper") {
-        if(computerSelection == "rock") {
-            return "player";
-        }
-        else {
-            return "computer";
-        }
-    }
-    else if (playerSelection === "scissor"){
-        if (computerSelection == "paper"){
-            return "player";
-        }
-        else {
-            return "computer";
-        }
-    }
-
-}
-
-//console.log(playRound(playerSelection, computerSelection));
-//let score = playRound(playerSelection, computerSelection);
-
-//if player add point if computer add point 
-//if less than 5 total run playRound funtion else game over
-//keep score 
-/*
-function game(){
-    let playerScore = 0;
-    let computerScore = 0;
-    while(playerScore < 5 && computerScore < 5){
-
-     let result = playRound(playerSelection, computerSelection);
-     if (result == "player"){
-        playerScore++;
-      }
-      else if (result == "computer"){
-        computerScore++;
-      }
-      else {
-        return "error";
-      }
-
-    }
-}
-*/
-function game() {
-  let playerScore = 0;
-  let computerScore = 0;
-  let round = 1;
-
-  while (playerScore < 5 && computerScore < 5) {
-    const playerSelection = getplayerSelection();
-    const computerSelection = getComputerChoice();
-
-    let result = playRound(playerSelection, computerSelection);
-
-    if (result === "player") {
-      playerScore++;
-      console.log(`Round ${round}: Player gets a point!`);
-    } else if (result === "computer") {
-      computerScore++;
-      console.log(`Round ${round}: Computer gets a point!`);
-    } else if (result === "tie") {
-      console.log(`Round ${round}: It's a tie! Play again.`);
-    } else {
-      return "error";
-    }
-
-    round++;
-  }
-
-  if (playerScore === 5) {
-    console.log("Congratulations! You won the game.");
-  } else if (computerScore === 5) {
-    console.log("Oops! The computer won the game.");
-  }
-}
-
-game();
-
-</script>
-
+<script src="game.js"></script>
 </body>
 </html>
-
-
-
